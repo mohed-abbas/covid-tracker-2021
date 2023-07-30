@@ -183,33 +183,3 @@ console.log(mapCountries)
 
 export default App;
 
-// useEffect(()=> {
-//   fetch("https://disease.sh/v3/covid-19/countries")
-//   .then((response)=>response.json())
-//   .then((data)=> {
-//       const countries = data.map((country)=> {
-//         return{
-//         name : country.country,
-//         value: country.countryInfo.iso2,
-//       }});
-
-//       setCountries(countries);
-//   })
-//   // getCountriesData();
-// }, []);
-
-// useEffect(() => {
-//   const getCountriesData = async () => {
-//     fetch("https://disease.sh/v3/covid-19/countries")
-//       .then((response) => response.json())
-//       .then((data) => {
-//         const countries = data.map((country) => ({
-//           name: country.country,
-//           value: country.countryInfo.iso2,
-//         }));
-//        setCountries(countries);
-//       });
-//   };
-
-//   getCountriesData();
-// }, []);
