@@ -19,15 +19,7 @@ function Map({countries, casesType, center, zoom}) {
           multiplier: 800,
         },
       };
-
-
-    const generateCircle = (countries) => {
-        // console.log(countries);
-        const testCircle = countries.map((country)=> {
-            console.log(country)
-        })
-    }
-    generateCircle(countries)
+    console.log(zoom)
     return (
         <div className="map">
             <MapContainer className="leafletMap__container" center={center} zoom={zoom}>
@@ -38,7 +30,6 @@ function Map({countries, casesType, center, zoom}) {
         {countries.map((country) => {
             return <Circle
                 center={[country.countryInfo.lat, country.countryInfo.long]}
-                // radius={Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier}
                 color={casesTypeColors[casesType].hex}
                 fillColor={casesTypeColors[casesType].hex}
                 fillOpacity={0.4}

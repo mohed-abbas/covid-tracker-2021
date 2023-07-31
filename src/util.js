@@ -33,25 +33,25 @@ export const sortData = (data) => {
   return sortedData;
 };
 
-export const showDataOnMap = (data, casesType = "cases") =>
-  data.map((country) => (
-    // <Circle
-    //   key={country.name}
-    //   center={[country.countryInfo.lat, country.countryInfo.long]}
-    //   color={casesTypeColors[casesType].hex}
-    //   fillColor={casesTypeColors[casesType].hex}
-    //   fillOpacity={0.4}
-    //   radius={
-    //     Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
-    //   }
-    // >
-      // <Popup>
-      //   <h1>im popup</h1>
-      // </Popup>
-    // </Circle>
-    <Circle
-      key={country.country}
-      center={[country.countryInfo.lat, country.countryInfo.long]}
-    ></Circle>
-    //  console.log(country)
-  ));
+// export const showDataOnMap = (data, casesType = "cases") =>
+//   data.map((country) => (
+//     // <Circle
+//     //   key={country.name}
+//     //   center={[country.countryInfo.lat, country.countryInfo.long]}
+//     //   color={casesTypeColors[casesType].hex}
+//     //   fillColor={casesTypeColors[casesType].hex}
+//     //   fillOpacity={0.4}
+//     //   radius={
+//     //     Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
+//     //   }
+//     // >
+//       // <Popup>
+//       //   <h1>im popup</h1>
+//       // </Popup>
+//     // // </Circle>
+//     // <Circle
+//     //   key={country.country}
+//     //   center={[country.countryInfo.lat, country.countryInfo.long]}
+//     // ></Circle>
+//     //  console.log(country)
+//   ));

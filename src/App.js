@@ -19,7 +19,7 @@ function App() {
   const [countryInfo, setCountryInfo] = useState({});
   const [TableData, setTableData] = useState([]);
   const [casesType, setCasesTypes] = useState("cases");
-  const [mapZoom, setMapZoom] = useState(3);
+  const [mapZoom, setMapZoom] = useState(2);
   const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
   const [mapCountries, setMapCountries] = useState([]);
 
@@ -33,41 +33,7 @@ function App() {
       });
   }, []);
 
-  // useEffect(() => {
-  //   let isApiSubscribed = true;
-  //   const getCountriesData = async () => {
-  //     await fetch("https://disease.sh/v3/covid-19/countries")
-  //       .then((response) => {
-  //           return response.json()
-  //       })
-  //       .then((data) => {
-  //         if (isApiSubscribed) {
-  //           const countries = data.map((country) => ({
-  //             name: country.country,
-  //             value: country.countryInfo.iso2,
-  //           }));
-  //           const sortedData = sortData(data);
-  //           setCountries(countries);
-  //           setMapCountries(data);
-  //           setTableData(sortedData);
-  //         }
-  //       });
-
-  //   return () => {
-  //     isApiSubscribed = false;
-  //   }
-  //   };
-  //   // getCountriesData();
-  // }, [mapCountries]);
-// const getCountriesData = async () => {
-//   const data = await fetch("https://disease.sh/v3/covid-19/countries").then((res)=> res.json())
-//   // console.log(data)
-// }
-// getCountriesData();
-
-
 useEffect(() => {
-  // const testCountries = getCountriesData();
   let isApiSubscribed = true;
   try {
     const testCountries = async () => {
@@ -97,30 +63,26 @@ useEffect(() => {
     }
 }, [])
 
-console.log(mapCountries)
   const onCountryChange = async (e) => {
     const countryCode = e.target.value;
-    // const url = countryCode === "WorldWide"
-    //     ? "https://disease.sh/v3/covid-19/all"
-    //     : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+    const url = countryCode === "WorldWide"
+        ? "https://disease.sh/v3/covid-19/all"
+        : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
 
-      let url = "";
-       if (countryCode === "WorldWide") {
-        url = "https://disease.sh/v3/covid-19/all"
-       } else {
-        url = `https://disease.sh/v3/covid-19/countries/${countryCode}`
-       }
-
-    await fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setCountry(countryCode);
-        if (countryCode !== 'WorldWide') { 
-          setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-        }
-        setMapZoom(2);
-        setCountryInfo(data);
-      });
+try {
+  const response = await fetch(url)
+  const data = await response.json();
+  setCountry(countryCode);
+  if (countryCode !== 'WorldWide') { 
+    setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+  }
+  setMapZoom(5);
+  setCountryInfo(data);
+  console.log(data);
+} catch (error) {
+  console.log(error.message)
+}  
+    
   };
 
   return (
